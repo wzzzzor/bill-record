@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wzzzzor.billrecord.domain.Color;
+import com.wzzzzor.billrecord.resultful.RestResult;
+import com.wzzzzor.billrecord.resultful.RestResult.OperatorType;
 import com.wzzzzor.billrecord.service.ColorService;
 
 import io.swagger.annotations.Api;
@@ -25,7 +27,15 @@ public class ColorController {
 
     @ApiOperation(value = "获取所有背景颜色列表", notes = "", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    public List<Color> findAll(){
-        return colorService.findAll();
+    public RestResult findAll() throws Exception{
+        RestResult result = new RestResult();
+        try {
+            List<Color> colorList = colorService.findAll();
+            result.addData(OperatorType.QUERY, colorList);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception(e.getMessage());
+        }
     }
 }

@@ -22,4 +22,11 @@
             <include refid="Base_Column_List" />
         FROM COLOR
     </select>
+    <select id="selectByPrimaryKey" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM COLOR
+        WHERE
+            ID = #{id}
+    </select>
 </mapper>

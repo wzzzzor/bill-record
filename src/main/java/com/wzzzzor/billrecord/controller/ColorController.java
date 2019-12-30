@@ -13,6 +13,7 @@ import com.wzzzzor.billrecord.domain.Color;
 import com.wzzzzor.billrecord.resultful.RestResult;
 import com.wzzzzor.billrecord.resultful.RestResult.OperatorType;
 import com.wzzzzor.billrecord.service.ColorService;
+import com.wzzzzor.billrecord.service.ISuperService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,10 +21,15 @@ import io.swagger.annotations.ApiOperation;
 @Api(value = "背景颜色接口", tags = {"背景颜色接口"})
 @RestController
 @RequestMapping("/rest/color")
-public class ColorController {
+public class ColorController extends SuperController<Color>{
 
     @Resource
     private ColorService colorService;
+
+    @Override
+    protected ISuperService<Color> getService() {
+        return colorService;
+    }
 
     @ApiOperation(value = "获取所有背景颜色列表", notes = "", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
@@ -38,4 +44,6 @@ public class ColorController {
             throw new Exception(e.getMessage());
         }
     }
+
+
 }

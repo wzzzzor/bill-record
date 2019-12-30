@@ -24,3 +24,5 @@ spring:
     testWhileIdle: true
     filters: stat,wall,log4j
     logSlowSql: true
+logging:
+  path: ${LOGGING_PATH:}

@@ -34,7 +34,7 @@ public class SwaggerConfig {
               //页面标题
                 .title("账单流水Swagger页面RESTful API")
               //创建人
-                .contact(new Contact("wzzzzor", "https://wzzzzor.word", ""))
+                .contact(new Contact("wzzzzor", "https://whz.world", ""))
               //版本号
                 .version("1.0")
               //描述

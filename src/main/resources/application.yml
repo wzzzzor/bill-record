@@ -1,6 +1,8 @@
 server:
   port: 8090
-spring: 
+spring:
+  thymeleaf:
+    cache: true
   devtools:
     restart:
         enabled: true #设置开启热部署
@@ -13,7 +15,7 @@ spring:
   datasource: 
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: oracle.jdbc.OracleDriver
-    url: jdbc:oracle:thin:@192.168.1.190:1521:dev
+    url: jdbc:oracle:thin:@101.231.81.202:9521:dev
     username: platform_portal
     password: kingstar
     initialSize: 5

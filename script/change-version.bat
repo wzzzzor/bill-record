@@ -1,5 +1,6 @@
 @echo off
 set /p version=«Î ‰»Î∞Ê±æ∫≈£∫
+cd..
 call mvn version:set -DnewVersion=%version%
 
 if "%errorlevel%"=="1" goto :initfailed

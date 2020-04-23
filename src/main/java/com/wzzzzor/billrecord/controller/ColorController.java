@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wzzzzor.billrecord.base.DataTablePage;
 import com.wzzzzor.billrecord.domain.Color;
 import com.wzzzzor.billrecord.resultful.RestResult;
 import com.wzzzzor.billrecord.resultful.RestResult.OperatorType;
@@ -33,11 +34,11 @@ public class ColorController extends SuperController<Color>{
 
     @ApiOperation(value = "获取所有背景颜色列表", notes = "", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_UTF8_VALUE )
     @RequestMapping(value = "/findAll", method = RequestMethod.GET)
-    public RestResult findAll() throws Exception{
+    public RestResult findAll(DataTablePage page) throws Exception{
         RestResult result = new RestResult();
         try {
-            List<Color> colorList = colorService.findAll();
-            result.addData(OperatorType.QUERY, colorList);
+            page = colorService.findAll(page);
+            result.addData(OperatorType.QUERY, page);
             return result;
         } catch (Exception e) {
             e.printStackTrace();

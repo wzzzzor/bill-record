@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,6 +17,9 @@ import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+
+import com.wzzzzor.billrecord.intercepter.PageInterceptor;
+
 
 @Configuration
 public class MyBatisConfig implements TransactionManagementConfigurer{
@@ -41,7 +45,10 @@ public class MyBatisConfig implements TransactionManagementConfigurer{
         bean.setTypeAliasesPackage(typeAliasesPackage);
         Properties properties = new Properties();
         properties.setProperty("databaseType", dialect);
-
+        PageInterceptor pageInterceptor = new PageInterceptor();
+        pageInterceptor.setProperties(properties);
+        Interceptor[] plugins = new Interceptor[] { pageInterceptor };
+        bean.setPlugins(plugins);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {

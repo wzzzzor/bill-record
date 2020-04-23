@@ -17,7 +17,7 @@
         VALUE
     </sql>
 
-    <select id="findAll" resultMap="BaseResultMap">
+    <select id="findAll" parameterType="com.wzzzzor.billrecord.base.DataTablePage" resultMap="BaseResultMap">
         SELECT
             <include refid="Base_Column_List" />
         FROM COLOR

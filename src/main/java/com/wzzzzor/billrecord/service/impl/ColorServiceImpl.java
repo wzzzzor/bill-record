@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.wzzzzor.billrecord.base.DataTablePage;
 import com.wzzzzor.billrecord.domain.Color;
 import com.wzzzzor.billrecord.service.ColorService;
 
@@ -22,8 +23,10 @@ public class ColorServiceImpl extends MybatisSuperService<Color> implements Colo
     }*/
 
     @Override
-    public List<Color> findAll() {
-        return this.sqlSessionTemplate.selectList(getSqlName(SQL_ID_FIND_ALL));
+    public DataTablePage findAll(DataTablePage page) {
+        List<Color> list =  this.sqlSessionTemplate.selectList(getSqlName(SQL_ID_FIND_ALL),page);
+        page.setAaData(list);
+        return page;
     }
 
 }

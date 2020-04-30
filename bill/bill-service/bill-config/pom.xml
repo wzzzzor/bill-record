@@ -20,7 +20,7 @@
         <mybatis-ehcache-version>1.0.0</mybatis-ehcache-version>
         <mybatis-spring-version>1.2.2</mybatis-spring-version>
         <ehcache-version>2.6.8</ehcache-version>
-        <springframework-version>5.1.6.RELEASE</springframework-version>
+        <springframework-version>5.2.6.RELEASE</springframework-version>
         <log4j-version>1.2.17</log4j-version>
         <io.springfox.version>2.9.2</io.springfox.version>
 	</properties>
